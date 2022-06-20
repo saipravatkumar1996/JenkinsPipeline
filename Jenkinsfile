@@ -34,7 +34,6 @@ stage('Deploy'){
    stage('Release'){
     steps{
       bat "docker run -p 8787:8989 jenkisnappfile"
-      bat "exit"
     }
   }
 }
