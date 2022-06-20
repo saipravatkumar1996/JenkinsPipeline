@@ -24,4 +24,10 @@ public class jenkinsController {
 		return "WEL COME TO JENKINS APPLICATION TEST";
 	}
 
+	@GetMapping("/version")
+	public String Version() {
+		
+		return "WEL COME TO JENKINS APPLICATION VERSION";
+	}
+
 }

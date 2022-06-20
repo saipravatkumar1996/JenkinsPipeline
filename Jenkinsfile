@@ -26,9 +26,14 @@ stage('Deploy'){
      bat "mvn install"
     }
   }
-  stage('Release'){
+  stage('BuildImage'){
     steps{
       bat "docker build -f Dockerfile -t jenkisnappfile ."
+    }
+  }
+   stage('Release'){
+    steps{
+      bat "docker run -p 8787:8989 jenkisnappfile"
     }
   }
 }
