@@ -17,5 +17,11 @@ public class jenkinsController {
 		
 		return "WEL COME TO JENKINS APPLICATION SHOW";
 	}
+	
+	@GetMapping("/test")
+	public String test() {
+		
+		return "WEL COME TO JENKINS APPLICATION TEST";
+	}
 
 }

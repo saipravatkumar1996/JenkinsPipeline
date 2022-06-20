@@ -1,7 +1,7 @@
 FROM openjdk:11
 #VOLUME /tmp
 ARG APP_NAME="JenkinApplication"
-ARG APP_VERSION="1.0"
+ARG APP_VERSION="1.1"
 ARG JAR_FILE="/target/${APP_NAME}-${APP_VERSION}.jar"
 COPY ${JAR_FILE} app.jar
 EXPOSE 8989
