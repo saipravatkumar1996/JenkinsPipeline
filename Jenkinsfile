@@ -33,6 +33,7 @@ stage('Deploy'){
   }
    stage('Release'){
     steps{
+      bat "docker kill $(docker container ls -q)"
       bat "docker run -p 8787:8989 jenkisnappfile"
     }
   }
