@@ -12,4 +12,10 @@ public class jenkinsController {
 		return "WEL COME TO JENKINS APPLICATION";
 	}
 
+	@GetMapping("/test")
+	public String test() {
+		
+		return "WEL COME TO JENKINS APPLICATION TEST";
+	}
+
 }
