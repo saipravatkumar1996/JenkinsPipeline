@@ -29,6 +29,8 @@ stage('Deploy'){
   stage('Release'){
     steps{
       bat "docker build -f Dockerfile -t jenkisnappfile ."
+      bat "docker tag jenkisnappfile pravat199665/jenkisnappfile"
+      bat "docker push jenkisnappfile pravat199665/jenkisnappfile"
     }
   }
 }
