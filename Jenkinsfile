@@ -33,7 +33,7 @@ stage('Deploy'){
   }
   stage('Stop service'){
     steps{
-      bat "docker kill $(docker container ls -q)"
+      bat "docker kill '$(docker container ls -q)'"
     }
   }
    stage('Release'){
