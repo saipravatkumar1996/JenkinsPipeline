@@ -31,11 +31,6 @@ stage('Deploy'){
       bat "docker build -f Dockerfile -t jenkisnappfile ."
     }
   }
-   stage('Release'){
-    steps{
-      bat "docker run -p 8787:8989 jenkisnappfile"
-    }
-  }
 }
 
 }
