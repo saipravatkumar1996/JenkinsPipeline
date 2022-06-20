@@ -31,11 +31,6 @@ stage('Deploy'){
       bat "docker build -f Dockerfile -t jenkisnappfile ."
     }
   }
-  stage('Stop service'){
-    steps{
-      bat "docker kill '$(docker container ls -q)'"
-    }
-  }
    stage('Release'){
     steps{
       bat "docker run -p 8787:8989 jenkisnappfile"
