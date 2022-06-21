@@ -34,7 +34,7 @@ stage('Deploy'){
       bat "docker container run -d --name jenkisnappfile -p 8989:8989 jenkisnappfile"
       bat "docker login -u pravat199665 -p Saibaba@91"
       bat "docker tag jenkisnappfile jenkisnappfile"
-      bat "docker push pravat199665/jenkisnappfile"
+      bat "docker push jenkisnappfile"
       bat "docker logout"
       
     }
