@@ -2,7 +2,7 @@
       bat "docker container stop jenkisnappfile"
       bat "docker run --name jenkisnappfile -p 8787:8989 jenkisnappfile"
       
-      
+     #  bat "docker tag jenkisnappfile pravat199665/jenkisnappfile"
          # bat "docker stop jenkisnappfile"
       
       
