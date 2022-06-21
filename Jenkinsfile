@@ -26,11 +26,13 @@ stage('Deploy'){
      bat "mvn install"
     }
   }
-  stage('Release'){
+  stage('Create Docker Image'){
     steps{
-      bat "docker build -f Dockerfile -t jenkisnappfile ."
+      bat "docker login -u pravat199665 -p Saibaba@91 docker.io; docker stop jenkisnappfile; docker system prune -a -f; docker container run -d --name jenkisnappfile -p 8989:8989 jenkisnappfile;docker tag jenkisnappfile pravat199665/jenkisnappfile ; docker push pravat199665/jenkisnappfile; docker logout"
     }
   }
+
+  
 }
 
 }

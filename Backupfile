@@ -1,0 +1,86 @@
+      bat "docker build -f Dockerfile -t jenkisnappfile ."
+      bat "docker container stop jenkisnappfile"
+      bat "docker run --name jenkisnappfile -p 8787:8989 jenkisnappfile"
+      
+      
+      
+      
+      
+      services:
+2
+  - docker:19.03.7-dind
+3
+4
+stages:
+5
+  - build jar
+6
+  - build and push docker image
+7
+  - deploy
+8
+9
+build:
+10
+  image: maven:3.6.3-jdk-11-slim
+11
+  stage: build jar
+12
+  before_script:
+13
+    - source .${CI_COMMIT_REF_NAME}.env
+14
+  script:
+15
+    - mvn clean install -Dspring.profiles.active=$SPRING_ACTIVE_PROFILE && mvn package -B -e -Dspring.profiles.active=$SPRING_ACTIVE_PROFILE
+16
+  artifacts:
+17
+    paths:
+18
+      - target/*.jar
+19
+20
+docker build:
+21
+  image: docker:stable
+22
+  stage: build and push docker image
+23
+  before_script:
+24
+    - source .${CI_COMMIT_REF_NAME}.env
+25
+  script:
+26
+    - docker build --build-arg SPRING_ACTIVE_PROFILE=$SPRING_ACTIVE_PROFILE -t $DOCKER_REPO .
+27
+    - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
+28
+    - docker push $DOCKER_REPO
+29
+30
+deploy:
+31
+  image: ubuntu:latest
+32
+  stage: deploy
+33
+  before_script:
+34
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+35
+    - eval $(ssh-agent -s)
+36
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+37
+    - mkdir -p ~/.ssh
+38
+    - chmod 700 ~/.ssh
+39
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+40
+    - source .${CI_COMMIT_REF_NAME}.env
+41
+  script:
+42
