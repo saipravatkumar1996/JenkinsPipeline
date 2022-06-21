@@ -35,5 +35,10 @@ public class jenkinsController {
 		
 		return "WEL COME TO JENKINS APPLICATION NEW JOB";
 	}
+	@GetMapping("/jenkinsjob")
+	public String jenkin() {
+		
+		return "WEL COME TO JENKINS APPLICATION JENKINS JOB";
+	}
 
 }

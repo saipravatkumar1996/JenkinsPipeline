@@ -29,6 +29,7 @@ stage('Deploy'){
   stage('Create Docker Image'){
     steps{
       
+      bat "docker stop jenkisnappfile"
       bat "docker system prune -a -f"
       bat "docker build -f Dockerfile -t jenkisnappfile ."
       bat "docker container run -d --name jenkisnappfile -p 8989:8989 jenkisnappfile"

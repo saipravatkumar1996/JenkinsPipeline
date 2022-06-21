@@ -3,7 +3,7 @@
       bat "docker run --name jenkisnappfile -p 8787:8989 jenkisnappfile"
       
       
-      
+         # bat "docker stop jenkisnappfile"
       
       
       services:
