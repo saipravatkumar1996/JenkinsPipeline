@@ -4,7 +4,8 @@
       
      #  bat "docker tag jenkisnappfile pravat199665/jenkisnappfile"
          # bat "docker stop jenkisnappfile"
-      
+            bat "docker stop jenkisnappfile"
+      bat "docker system prune -a -f"
       
       services:
 2
